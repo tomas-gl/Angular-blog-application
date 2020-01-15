@@ -1,31 +1,60 @@
-# AngularBlog
+# angular-first-app
 
-![Screenshot](image.png)
+## Install the basic components for Angular:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+To prepare the development environment for an Angular application, we need to install the CLI (Command Line Interface).
+In order to install it, we need to have beforehand Nodejs installed on our machine.  
 
 
-## Development server
+To install it, go to [The official Node.js platform](https://nodejs.org/en/) (I recommend using the more stable and latest "LTS"  version)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Once installed we need to install the Node Package Management (or "npm").
+To check if we currently have the latest version, we will have to run the native console of our machine (examples below are used under Windows).
 
-## Code scaffolding
+In the console, type the following:
+```
+npm install -g npm@latest
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Once it's done, we can install the CLI of Angular:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm install -g @angular/cli
+```
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+To create a new Angular project, we will use the new installed CLI.
+In the command line and under the folder where you want to create your project, write the following:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+ng new "your project's name"
+```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-"# angular-blog-application" 
+Once all files and packages are installed, navigate in the new created project and type the following:
+
+```
+ng serve
+```
+
+
+This will run the server application so we are able to see in real time in our browser the application.
+In your browser, navigate through "localhost:4200" to see your app running. Your development environment is now ready.
+
+
+
+## Add components, services:
+
+To create a new component using Angular CLI, write to following:
+
+```
+ng generate component "your component's name"
+```
+
+To create a new service using Angular CLI, write to following:
+
+```
+ng generate service "your component's name"
+```
