@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'angular-blog';
@@ -11,7 +11,7 @@ export class AppComponent {
   posts = [
     {
       title: 'Hello World',
-      content: 'Encore un bout de code pour le bien etre de la tradittion',
+      content: 'Encore un bout de code pour le bien etre de la tradition',
       loveIts: 0,
       created_at: 'Wed Oct 30 2018 16:33:22'
     },

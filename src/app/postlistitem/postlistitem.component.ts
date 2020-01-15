@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-postlistitem',
   templateUrl: './postlistitem.component.html',
-  styleUrls: ['./postlistitem.component.scss']
+  styleUrls: ['./postlistitem.component.css']
 })
 export class PostlistitemComponent implements OnInit {
 
@@ -19,11 +19,9 @@ export class PostlistitemComponent implements OnInit {
 
   onDontLoveIt() {
     this.loveIts--;
-    console.log('Not love ' + this.loveIts);
   }
 
   onLoveIt() {
     this.loveIts++;
-    console.log('love ' + this.loveIts);
   }
 }
