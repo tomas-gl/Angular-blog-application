@@ -1,4 +1,4 @@
-# angular-first-app
+# Angular Blog Application
 
 ## Install the basic components for Angular:
 
