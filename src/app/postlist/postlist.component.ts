@@ -8,15 +8,6 @@ import { PostService } from '../services/post.service';
 })
 export class PostlistComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() content: string;
-  @Input() loveIts: number;
-  @Input() created_at: Date;
-  @Input() posts;
-
-  title = 'angular-blog';
-  posts: any[];
-
   constructor(private postService: PostService) {
    }
 

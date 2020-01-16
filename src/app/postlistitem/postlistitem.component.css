@@ -36,6 +36,10 @@
   margin: 15px;
 }
 
+.title{
+  font-size: 30px;
+}
+
 li{
   list-style-type: none;
 }

@@ -8,14 +8,18 @@ import { PostService } from '../services/post.service';
 })
 export class PostlistitemComponent implements OnInit {
 
+  @Input() id: number;
   @Input() title: string;
   @Input() content: string;
   @Input() loveIts: number;
   @Input() created_at: Date;
 
-  constructor() { }
+  posts: any[];
+
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
+         this.posts = this.postService.posts;
   }
 
   onDontLoveIt() {
@@ -24,5 +28,9 @@ export class PostlistitemComponent implements OnInit {
 
   onLoveIt() {
     this.loveIts++;
+  }
+
+  onDeletePost(){
+    this.postService.deletePost();
   }
 }

@@ -1,6 +1,6 @@
 <li [ngClass]="loveIts >= 0 ? 'border border-success' : 'border border-danger' ">
     <p>
-      <span class="content">
+      <span class="title">
         <strong> {{ title }} </strong>
       </span>
       <span class="content">
@@ -9,15 +9,26 @@
     </p>
     <span class="date col-lg-12">{{ created_at | date: short }}</span>
     <div class="buttons col-lg-12">
+
       <button
         type="button"
         class="btn btn-primary"
         (click)="onLoveIt()">
         <i class="far fa-thumbs-up"></i>
       </button>
-      <button ml-3 type="button" class="btn btn-danger" (click)="onDontLoveIt()">
+
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="onDontLoveIt()">
         <i class="far fa-thumbs-down"></i>
       </button>
       <span class="numberloveIts h6">{{ loveIts }}</span>
+    </div>
+
+    <div class="buttons col-lg-12">
+      <button ml-3 type="button" class="btn btn-danger" (click)="onDeletePost()">
+        <span>Delete</span>
+      </button>
     </div>
 </li>
