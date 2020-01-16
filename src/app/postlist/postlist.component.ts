@@ -14,9 +14,13 @@ export class PostlistComponent implements OnInit {
   @Input() created_at: Date;
   @Input() posts;
 
-  constructor() { }
+  title = 'angular-blog';
+  posts: any[];
 
-  ngOnInit() {
-  }
+  constructor(private postService: PostService) {
+   }
 
+   ngOnInit(){
+     this.posts = this.postService.posts;
+   }
 }

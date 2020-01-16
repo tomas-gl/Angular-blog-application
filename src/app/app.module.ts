@@ -5,15 +5,26 @@ import { AppComponent } from './app.component';
 import { PostlistComponent } from './postlist/postlist.component';
 import { PostlistitemComponent } from './postlistitem/postlistitem.component';
 import { PostService } from './services/post.service';
+import { NewpostComponent } from './newpost/newpost.component';
+import {RouterModule, Routes} from "@angular/router";
+
+const appRoutes: Routes = [
+  {path: 'posts', component: PostlistComponent },
+  {path: 'new', component: NewpostComponent},
+  {path: '', component: PostlistComponent },
+  {path: '**', redirectTo: '/posts'}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     PostlistComponent,
-    PostlistitemComponent
+    PostlistitemComponent,
+    NewpostComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     PostService
