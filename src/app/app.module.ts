@@ -10,6 +10,13 @@ import {RouterModule, Routes} from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 
+/**
+* Those are the routes path used for the Application
+* "Posts" route will display the list of post as well as being the home page
+* "New" route will redirect to the "newpost component" allowing the creation of a new post
+* Creating a new post will redirect the user to the home page
+* the "**" path will redirect any url non-existing in the app to the home page automatically
+*/
 const appRoutes: Routes = [
   {path: 'posts', component: PostlistComponent },
   {path: 'new', component: NewpostComponent},
