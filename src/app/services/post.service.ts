@@ -1,3 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable} from '@angular/core';
+
+@Injectable()
 export class PostService {
   posts = [
     {
@@ -5,24 +9,25 @@ export class PostService {
       title: 'Premier post',
       content: 'Hello World !',
       loveIts: 0,
-      created_at: 'Wed Oct 30 2018 16:33:22'
+      created_at: 0
     },
     {
       id: 2,
       title: 'Deuxième post',
       content: 'Bonjour !',
       loveIts: 0,
-      created_at: 'Wed Oct 27 2018 16:33:22'
+      created_at: 0
     },
     {
       id: 3,
       title: 'Troisième post',
       content: 'Bonsoir !',
       loveIts: 0,
-      created_at: 'Wed Oct 12 2018 16:33:22'
+      created_at: 0
     },
   ];
 
+constructor(private httpClient: HttpClient){}
 
   addPost(title: string, content: string, loveIts: number, created_at: Date){
     const postObject ={
@@ -34,18 +39,31 @@ export class PostService {
     };
     postObject.title= title;
     postObject.content= content;
-    postObject.loveIts: loveIts;
-    postObject.created_at: created_at;
+    postObject.loveIts= loveIts;
+    postObject.created_at= Date.now();
     postObject.id= this.posts[(this.posts.length -1)].id +1;
 
     this.posts.push(postObject);
   }
 
-  deletePost(post:array){
-    const index: number = this.data.indexOf(post);
-    if (index !== -1){
-        this.data.splice(index, 1);
+/*
+  deletePost(post: array[]){
+      this.posts[post].splice();
     }
-  }
+*/
+
+savePostsToServer(){
+  this.httpClient
+  .post('https://http-blog-demo.firebaseio.com/posts.json', this.posts)
+  .subscribe(
+          () =>{
+            console.log('Post enregistré');
+          },
+          (error) =>{
+            console.log('Erreur' + error);
+          }
+  )
+}
+
 
 }

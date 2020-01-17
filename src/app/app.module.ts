@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PostlistComponent } from './postlist/postlist.component';
-import { PostlistitemComponent } from './postlistitem/postlistitem.component';
+import { PostlistComponent } from './controller/postlist.component';
+import { PostlistitemComponent } from './controller/postlistitem.component';
 import { PostService } from './services/post.service';
-import { NewpostComponent } from './newpost/newpost.component';
+import { NewpostComponent } from './controller/newpost.component';
 import {RouterModule, Routes} from "@angular/router";
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 
 const appRoutes: Routes = [
   {path: 'posts', component: PostlistComponent },
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [

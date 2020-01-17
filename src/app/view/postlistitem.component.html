@@ -1,4 +1,4 @@
-<li [ngClass]="loveIts >= 0 ? 'border border-success' : 'border border-danger' ">
+<li class="post" [ngClass]="loveIts >= 0 ? 'border border-success' : 'border border-danger' ">
     <p>
       <span class="title">
         <strong> {{ title }} </strong>
@@ -30,5 +30,6 @@
       <button ml-3 type="button" class="btn btn-danger" (click)="onDeletePost()">
         <span>Delete</span>
       </button>
+
     </div>
 </li>

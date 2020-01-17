@@ -1,0 +1,12 @@
+.formulaire{
+  background: #062740;
+  border: #fff 3px solid;
+  border-radius: 25px;
+  padding: 25px;
+  margin: 50px;
+}
+
+.title, h2{
+  font-size: 3vh;
+  color: #fff;
+}

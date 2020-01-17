@@ -3,8 +3,8 @@ import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-postlistitem',
-  templateUrl: './postlistitem.component.html',
-  styleUrls: ['./postlistitem.component.css']
+  templateUrl: '../view/postlistitem.component.html',
+  styleUrls: ['../view/postlistitem.component.css']
 })
 export class PostlistitemComponent implements OnInit {
 
@@ -30,7 +30,10 @@ export class PostlistitemComponent implements OnInit {
     this.loveIts++;
   }
 
+/*
   onDeletePost(){
-    this.postService.deletePost();
+    this.postService.deletePost(this.posts);
   }
+*/
+
 }
