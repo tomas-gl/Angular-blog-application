@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
 
+
 @Component({
   selector: 'app-postlistitem',
   templateUrl: '../view/postlistitem.component.html',
   styleUrls: ['../view/postlistitem.component.css']
 })
-export class PostlistitemComponent implements OnInit {
+export class PostlistitemComponent {
 
   @Input() id: number;
   @Input() title: string;
@@ -16,24 +17,26 @@ export class PostlistitemComponent implements OnInit {
 
   posts: any[];
 
+
   constructor(private postService: PostService) { }
 
   ngOnInit() {
-         this.posts = this.postService.posts;
+
   }
+
+
+onLoveIt() {
+  this.loveIts++;
+}
 
   onDontLoveIt() {
     this.loveIts--;
   }
 
-  onLoveIt() {
-    this.loveIts++;
+
+  onDeletePost(){
+    this.postService.deletePost(this.id);
   }
 
-/*
-  onDeletePost(){
-    this.postService.deletePost(this.posts);
-  }
-*/
 
 }

@@ -5,3 +5,18 @@
 h2{
   color: #fff;
 }
+
+
+button, .btn{
+  margin: 25px;
+}
+
+.charger{
+  background-color:#2A13BD;
+  border-color: #2A13BD;
+}
+
+.charger:hover{
+  background-color:#1D1074;
+  border-color: #1D1074;
+}

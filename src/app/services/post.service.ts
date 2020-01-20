@@ -1,35 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class PostService {
 
+  postSubject = new Subject<any[]>();
 
-  private posts = [
-    {
-      id: 1,
-      title: 'Premier post',
-      content: 'Hello World !',
-      loveIts: 0,
-      created_at: 0
-    },
-    {
-      id: 2,
-      title: 'Deuxième post',
-      content: 'Bonjour !',
-      loveIts: 0,
-      created_at: 0
-    },
-    {
-      id: 3,
-      title: 'Troisième post',
-      content: 'Bonsoir !',
-      loveIts: 0,
-      created_at: 0
-    },
-  ];
+    private posts = [];
+
 
 constructor(private httpClient: HttpClient){}
+
+  emitPostSubject(){
+    this.postSubject.next(this.posts.slice());
+  }
+
+
+  getPostById(id: number){
+  const post = this.posts.find(
+              (postObject) =>{
+      return postObject.id === id;
+    }
+  );
+  return post;
+}
+
+/*
+* Delete Button to fix
+*/
+
+deletePost(index: number){
+      index = this.posts.indexOf(index,index);
+      this.posts.splice(index);
+      this.emitPostSubject();
+    }
+
 
   addPost(title: string, content: string, loveIts: number, created_at: Date){
     const postObject ={
@@ -39,45 +45,45 @@ constructor(private httpClient: HttpClient){}
       loveIts: 0,
       created_at: Date.now(),
     };
+
     postObject.title= title;
     postObject.content= content;
     postObject.loveIts= loveIts;
     postObject.created_at= Date.now();
-    postObject.id= this.posts[(this.posts.length -1)].id +1;
+    postObject.id= this.posts[(this.posts.length-1)].id+1;
 
     this.posts.push(postObject);
+    this.emitPostSubject();
   }
 
-/*
-  deletePost(post: array[]){
-      this.posts[post].splice();
-    }
-*/
 
 savePostsToServer(){
   this.httpClient
   .put('https://http-blog-demo.firebaseio.com/posts.json', this.posts)
   .subscribe(
           () =>{
-            console.log('Post enregistré');
+            console.log('Posts enregistrés dans la base de donnée');
           },
           (error) =>{
             console.log('Erreur' + error);
           }
-  )
+  );
 }
+
 
 getPostsFromServer(){
   this.httpClient
-  .get<any>[]('https://http-blog-demo.firebaseio.com/posts.json')
+  .get<any[]>('https://http-blog-demo.firebaseio.com/posts.json')
   .subscribe(
-    (response) =>{
-    this.posts = response;
-  },
-  (error) =>{
-    console.log('Erreur de chargement' + error);
-  }
-  )
+          (response) =>{
+          console.log('Posts chargés depuis la base de donnée');
+          this.posts = response;
+          this.emitPostSubject();
+        },
+        (error) =>{
+          console.log('Erreur de chargement' + error);
+        }
+  );
 }
 
 
