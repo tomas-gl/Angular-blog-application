@@ -62,10 +62,10 @@ savePostsToServer(){
   .put('https://http-blog-demo.firebaseio.com/posts.json', this.posts)
   .subscribe(
           () =>{
-            console.log('Posts enregistrés dans la base de donnée');
+            console.log('Saved posts in the database');
           },
           (error) =>{
-            console.log('Erreur' + error);
+            console.log('Error' + error);
           }
   );
 }
@@ -76,12 +76,12 @@ getPostsFromServer(){
   .get<any[]>('https://http-blog-demo.firebaseio.com/posts.json')
   .subscribe(
           (response) =>{
-          console.log('Posts chargés depuis la base de donnée');
+          console.log('Fetched posts from the database');
           this.posts = response;
           this.emitPostSubject();
         },
         (error) =>{
-          console.log('Erreur de chargement' + error);
+          console.log('Error' + error);
         }
   );
 }
