@@ -18,6 +18,10 @@ export class PostlistComponent implements OnInit {
    }
 
    onSave(){
-     this.posts.savePostsToServer();
+     this.postService.savePostsToServer();
+   }
+
+   onFetch(){
+     this.postService.getPostsFromServer();
    }
 }

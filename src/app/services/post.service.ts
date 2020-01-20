@@ -3,7 +3,9 @@ import { Injectable} from '@angular/core';
 
 @Injectable()
 export class PostService {
-  posts = [
+
+
+  private posts = [
     {
       id: 1,
       title: 'Premier post',
@@ -54,7 +56,7 @@ constructor(private httpClient: HttpClient){}
 
 savePostsToServer(){
   this.httpClient
-  .post('https://http-blog-demo.firebaseio.com/posts.json', this.posts)
+  .put('https://http-blog-demo.firebaseio.com/posts.json', this.posts)
   .subscribe(
           () =>{
             console.log('Post enregistré');
@@ -62,6 +64,19 @@ savePostsToServer(){
           (error) =>{
             console.log('Erreur' + error);
           }
+  )
+}
+
+getPostsFromServer(){
+  this.httpClient
+  .get<any>[]('https://http-blog-demo.firebaseio.com/posts.json')
+  .subscribe(
+    (response) =>{
+    this.posts = response;
+  },
+  (error) =>{
+    console.log('Erreur de chargement' + error);
+  }
   )
 }
 
